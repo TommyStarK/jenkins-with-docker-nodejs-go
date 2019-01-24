@@ -1,5 +1,7 @@
 FROM jenkins/jenkins:lts
 
+ARG user=jenkins
+
 USER root
 
 # prerequisites for docker
@@ -29,4 +31,12 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-co
 # give jenkins docker rights
 RUN usermod -aG docker jenkins
 
-USER jenkins
+RUN mkdir -p /home/${user}/.ssh
+
+WORKDIR /home/${user}/.ssh
+
+RUN ssh-keygen -t rsa -N "" -f id_rsa
+
+WORKDIR /home
+
+USER ${user}

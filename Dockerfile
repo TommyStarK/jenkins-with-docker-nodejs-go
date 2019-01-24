@@ -31,10 +31,12 @@ RUN curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-co
 # give jenkins docker rights
 RUN usermod -aG docker jenkins
 
+# create a folder to hold jenkins ssh keys
 RUN mkdir -p /home/${user}/.ssh
 
-WORKDIR /home/${user}/.ssh
+WORKDIR  /home/${user}/.ssh
 
+# generate ssh keys
 RUN ssh-keygen -t rsa -N "" -f id_rsa
 
 WORKDIR /home

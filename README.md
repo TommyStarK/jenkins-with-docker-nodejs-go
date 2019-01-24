@@ -16,13 +16,13 @@ $ docker run --detach --restart always --name ci-jenkins -v /var/run/docker.sock
 
 # Complete the installation
 
-Connect to the running container as root
+- Connect to the running container as root:
 
 ```bash
 $ docker exec -ti -u root ci-jenkins bash
 ```
 
-Now we are inside the container, run the following commands
+- Now we are inside the container, run the following commands:
 
 ```bash
 # change ownership of docker socket to jenkins user
@@ -30,6 +30,17 @@ $ chown jenkins /var/run/docker.sock
 
 # install netcat/g++
 $ sudo apt-get install -y g++ netcat
+
+$ exit
+```
+
+- Test docker:
+
+```bash
+$ docker exec -ti ci-jenkins bash
+
+# This command should display all docker containers
+$ docker ps -a
 ```
 
 ## Logs

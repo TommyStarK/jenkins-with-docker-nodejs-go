@@ -49,3 +49,11 @@ $ docker ps -a
 ```bash
 $ docker logs -f `docker ps -aqf "name=ci-jenkins"`
 ```
+
+# Retrieve your ssh keys
+
+```bash
+$ docker exec -ti -u root ci-jenkins bash
+$ cat jenkins/.ssh/id_rsa*
+$ exit
+```

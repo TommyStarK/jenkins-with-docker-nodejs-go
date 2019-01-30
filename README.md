@@ -9,16 +9,10 @@ $ sudo mkdir -p /var/jenkins_home/{workspace,builds,jobs}
 $ sudo chown -R 1000 /var/jenkins_home/ && sudo chmod -R a+rwx /var/jenkins_home/
 ```
 
-# Build the image
-
-```bash
-$ docker build . -t ci-jenkins:latest
-```
-
 # Run the container
 
 ```bash
-$ docker run --detach --restart always --name ci-jenkins -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 ci-jenkins
+$ docker-compose up --build --detach
 ```
 
 # Complete the installation

@@ -2,6 +2,13 @@
 
 A docker-in-docker for CI using Jenkins.
 
+# Setup your host
+
+```bash
+$ sudo mkdir -p /var/jenkins_home/{workspace,builds,jobs}
+$ sudo chown -R 1000 /var/jenkins_home/ && sudo chmod -R a+rwx /var/jenkins_home/
+```
+
 # Build the image
 
 ```bash

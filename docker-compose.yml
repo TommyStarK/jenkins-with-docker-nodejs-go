@@ -1,0 +1,22 @@
+version: '3.1'
+
+volumes:
+  workspace:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/jenkins_home/workspace/
+
+services:
+  ci-jenkins:
+    build: .
+    container_name: ci-jenkins
+    hostname: ci-jenkins
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - workspace:/var/jenkins_home/workspace/
+      # Can also do builds/jobs/etc here and below

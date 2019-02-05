@@ -46,7 +46,9 @@ RUN apt-get update && apt-get -y install \
         curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose \
                 && chmod +x /usr/local/bin/docker-compose && \
         # give jenkins docker rights
-        usermod -aG docker jenkins
+        usermod -aG docker jenkins && \
+        # grant correct permissions to npm -g
+        chown -R jenkins /usr/lib
 
 WORKDIR /root
 

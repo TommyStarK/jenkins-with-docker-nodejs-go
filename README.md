@@ -29,7 +29,7 @@ $ docker-compose up --build --detach
 - Connect to the running container as root:
 
 ```bash
-$ docker exec -ti -u root jenkins bash
+$ docker exec -ti -u root "${PROJECT_NAME}_jenkins" bash
 ```
 
 - Now we are inside the container, run the following commands:
@@ -45,7 +45,7 @@ $ exit
 - Test docker:
 
 ```bash
-$ docker exec -ti jenkins bash
+$ docker exec -ti "${PROJECT_NAME}_jenkins" bash
 
 # This command should display all docker containers
 $ docker ps -a
@@ -54,13 +54,13 @@ $ docker ps -a
 ## Logs
 
 ```bash
-$ docker logs -f `docker ps -aqf "name=jenkins"`
+$ docker logs -f `docker ps -aqf "name=${PROJECT_NAME}_jenkins"`
 ```
 
 ## Retrieve your ssh keys
 
 ```bash
-$ docker exec -ti -u root jenkins bash
+$ docker exec -ti -u root "${PROJECT_NAME}_jenkins" bash
 $ cat /root/.ssh/*
 $ exit
 ```

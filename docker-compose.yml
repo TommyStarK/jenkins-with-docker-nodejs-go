@@ -1,5 +1,8 @@
 version: '3.1'
 
+networks:
+  ci:
+
 volumes:
   workspace:
     driver: local
@@ -19,4 +22,5 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - workspace:/var/jenkins_home/workspace/
-      
+    networks:
+      - ci

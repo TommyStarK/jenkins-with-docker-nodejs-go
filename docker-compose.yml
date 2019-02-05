@@ -19,8 +19,8 @@ services:
         docker_compose_version: 1.23.1
         node_version: 11
         go_version: 1.11.5
-    container_name: jenkins
-    hostname: jenkins
+    container_name: ${PROJECT_NAME}_jenkins
+    hostname: ${PROJECT_NAME}_jenkins
     ports:
       - 8080:8080
       - 50000:50000

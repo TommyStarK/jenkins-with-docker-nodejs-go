@@ -1,6 +1,6 @@
 # CI-Jenkins
 
-A docker-in-docker for CI using Jenkins.
+A CI-Jenkins base image with docker-in-docker enabled, Nodejs v11 & Golang v1.11.5 available.
 
 # Setup your host
 

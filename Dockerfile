@@ -17,7 +17,7 @@ RUN apt-get update \
         software-properties-common \
         gcc \
         g++ \
-	    gawk \
+	gawk \
         netcat \
         nano \
         make  && \

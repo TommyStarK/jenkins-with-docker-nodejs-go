@@ -9,6 +9,15 @@ $ sudo mkdir -p /var/jenkins_home/{workspace,builds,jobs}
 $ sudo chown -R 1000 /var/jenkins_home/ && sudo chmod -R a+rwx /var/jenkins_home/
 ```
 
+# Setup your project
+
+```bash
+$ export PROJECT_NAME=dummy
+$ git clone https://github.com/TommyStarK/ci-jenkins-with-docker.git
+$ mv ci-jenkins-with-docker $PROJECT_NAME
+$ cd $PROJECT_NAME
+```
+
 # Run the container
 
 ```bash

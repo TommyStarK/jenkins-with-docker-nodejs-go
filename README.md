@@ -1,6 +1,6 @@
-# CI-Jenkins
+# ci-jenkins-with-docker
 
-A CI-Jenkins base image with docker-in-docker enabled, Nodejs v11 & Golang v1.11.5 available.
+A Jenkins base image with docker-in-docker enabled, Nodejs v11 & Golang v1.11.5 available.
 
 # Setup your host
 
@@ -20,7 +20,7 @@ $ docker-compose up --build --detach
 - Connect to the running container as root:
 
 ```bash
-$ docker exec -ti -u root ci-jenkins bash
+$ docker exec -ti -u root jenkins bash
 ```
 
 - Now we are inside the container, run the following commands:
@@ -36,7 +36,7 @@ $ exit
 - Test docker:
 
 ```bash
-$ docker exec -ti ci-jenkins bash
+$ docker exec -ti jenkins bash
 
 # This command should display all docker containers
 $ docker ps -a
@@ -45,13 +45,13 @@ $ docker ps -a
 ## Logs
 
 ```bash
-$ docker logs -f `docker ps -aqf "name=ci-jenkins"`
+$ docker logs -f `docker ps -aqf "name=jenkins"`
 ```
 
 ## Retrieve your ssh keys
 
 ```bash
-$ docker exec -ti -u root ci-jenkins bash
-$ cat /home/jenkins/.ssh/*
+$ docker exec -ti -u root jenkins bash
+$ cat /root/.ssh/*
 $ exit
 ```

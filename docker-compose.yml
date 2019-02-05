@@ -1,26 +1,31 @@
 version: '3.1'
 
 networks:
-  ci:
+  jenkins_network:
 
 volumes:
-  workspace:
+  jenkins_workspace:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /var/jenkins_home/workspace/
+      device: /var/jenkins_home/workspace
 
 services:
-  ci-jenkins:
-    build: .
-    container_name: ci-jenkins
-    hostname: ci-jenkins
+  jenkins:
+    build:
+      context: .
+      args:
+        docker_compose_version: 1.23.1
+        node_version: 11
+        go_version: 1.11.5
+    container_name: jenkins
+    hostname: jenkins
     ports:
       - 8080:8080
       - 50000:50000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - workspace:/var/jenkins_home/workspace/
+      - jenkins_workspace:/var/jenkins_home/workspace
     networks:
-      - ci
+      - jenkins_network

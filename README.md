@@ -29,9 +29,7 @@ $ docker exec -ti -u root ci-jenkins bash
 # change ownership of docker socket to jenkins user
 $ chown jenkins /var/run/docker.sock
 
-# install netcat/g++
-$ sudo apt-get install -y g++ netcat
-
+# exit
 $ exit
 ```
 
@@ -54,6 +52,6 @@ $ docker logs -f `docker ps -aqf "name=ci-jenkins"`
 
 ```bash
 $ docker exec -ti -u root ci-jenkins bash
-$ cat jenkins/.ssh/id_rsa*
+$ cat /home/jenkins/.ssh/*
 $ exit
 ```

@@ -4,14 +4,21 @@ A Jenkins base image with docker-in-docker enabled and docker-compose, go and no
 
 **NOTE:**  You can edit the `docker-compose.yml` file to install docker-compose, go and nodejs version that fit to your needs.
 
-# Setup your host
+# Install
+
+The only requirement is:
+
+- [Docker](https://docs.docker.com/)
+
+
+## Setup your host
 
 ```bash
 $ sudo mkdir -p /var/jenkins_home/{workspace,builds,jobs}
 $ sudo chown -R 1000 /var/jenkins_home/ && sudo chmod -R a+rwx /var/jenkins_home/
 ```
 
-# Setup your project
+## Setup your project
 
 ```bash
 $ export PROJECT_NAME=dummy
@@ -20,13 +27,13 @@ $ mv ci-jenkins-with-docker $PROJECT_NAME
 $ cd $PROJECT_NAME
 ```
 
-# Run the container
+## Run the container
 
 ```bash
 $ docker-compose up --build --detach
 ```
 
-# Complete the installation
+## Complete the installation
 
 - Connect to the running container as root:
 
@@ -53,16 +60,27 @@ $ docker exec -ti "${PROJECT_NAME}_jenkins" bash
 $ docker ps -a
 ```
 
+## Retrieve your ssh keys generated for your jenkins
+
+```bash
+$ docker exec -ti -u root "${PROJECT_NAME}_jenkins" bash
+$ cat /root/.ssh/*
+$ exit
+```
+
 ## Logs
 
 ```bash
 $ docker logs -f `docker ps -aqf "name=${PROJECT_NAME}_jenkins"`
 ```
 
-## Retrieve your ssh keys
+# Uninstall
 
 ```bash
-$ docker exec -ti -u root "${PROJECT_NAME}_jenkins" bash
-$ cat /root/.ssh/*
-$ exit
+$ docker stop "${PROJECT_NAME}_jenkins"
+$ docker rm "${PROJECT_NAME}_jenkins"
+$ docker rmi "${PROJECT_NAME}_jenkins"
+$ docker volume rm "${PROJECT_NAME}_jenkins_workspace"
+$ docker network rm "${PROJECT_NAME}_jenkins_network"
+$ sudo rm -rf /var/jenkins_home
 ```

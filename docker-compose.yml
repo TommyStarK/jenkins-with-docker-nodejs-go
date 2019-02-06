@@ -9,7 +9,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /var/jenkins_home/workspace
+      device: ${JENKINS_HOME}
 
 services:
   jenkins:
@@ -22,10 +22,13 @@ services:
     container_name: ${PROJECT_NAME}_jenkins
     hostname: ${PROJECT_NAME}_jenkins
     ports:
-      - 8080:8080
-      - 50000:50000
+      - 8090:8080
+      - 50001:50000
+    environment:
+      - JENKINS_HOME=${JENKINS_HOME}
+      - JAVA_OPTS="-Djava.io.tmpdir=${JENKINS_HOME}"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - jenkins_workspace:/var/jenkins_home/workspace
+      - jenkins_workspace:${JENKINS_HOME}
     networks:
       - jenkins_network

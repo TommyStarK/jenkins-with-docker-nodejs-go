@@ -22,8 +22,8 @@ services:
     container_name: ${PROJECT_NAME}_jenkins
     hostname: ${PROJECT_NAME}_jenkins
     ports:
-      - 8090:8080
-      - 50001:50000
+      - 8080:8080
+      - 50000:50000
     environment:
       - JENKINS_HOME=${JENKINS_HOME}
       - JAVA_OPTS="-Djava.io.tmpdir=${JENKINS_HOME}"

@@ -18,7 +18,6 @@ RUN apt-get update && apt-get -y install \
                 curl \
                 gnupg2 \
                 gawk \
-                nano \
                 netcat \
                 build-essential \
                 libssl-dev \

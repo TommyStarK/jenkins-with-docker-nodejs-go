@@ -1,6 +1,6 @@
 # ci-jenkins-with-docker
 
-A Jenkins base image with docker-in-docker enabled and docker-compose, go and nodejs embedded.
+A Jenkins base image with docker-client, docker-compose, go and nodejs embedded.
 
 **NOTE:**  You can edit the `docker-compose.yml` file to install docker-compose, go and nodejs version that fit to your needs.
 

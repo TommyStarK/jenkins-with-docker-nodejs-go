@@ -1,3 +1,5 @@
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+
 # jenkins-with-docker-nodejs-go
 
 A Jenkins Docker image with docker-client, docker-compose, go and nodejs embedded.

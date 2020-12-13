@@ -26,8 +26,8 @@ $ sudo chmod -R a+rwx $JENKINS_HOME
 ## Setup your project
 
 ```bash
-$ git clone https://github.com/TommyStarK/ci-jenkins-with-docker.git
-$ mv ci-jenkins-with-docker $PROJECT_NAME
+$ git clone https://github.com/TommyStarK/jenkins-with-docker-nodejs-go.git
+$ mv jenkins-with-docker-nodejs-go $PROJECT_NAME
 $ cd $PROJECT_NAME
 ```
 
@@ -50,17 +50,12 @@ $ docker exec -ti -u root "${PROJECT_NAME}_jenkins" bash
 ```bash
 # change ownership of docker socket to jenkins user
 $ chown jenkins /var/run/docker.sock
-
-# exit
-$ exit
 ```
 
 - Test docker:
 
 ```bash
 $ docker exec -ti "${PROJECT_NAME}_jenkins" bash
-
-# This command should display all docker containers
 $ docker ps -a
 ```
 
@@ -69,7 +64,6 @@ $ docker ps -a
 ```bash
 $ docker exec -ti -u root "${PROJECT_NAME}_jenkins" bash
 $ cat /root/.ssh/*
-$ exit
 ```
 
 ## Logs

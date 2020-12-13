@@ -1,8 +1,8 @@
 FROM jenkins/jenkins:lts
 
-ARG docker_compose_version=1.23.1
-ARG go_version=1.11.5
-ARG node_version=11
+ARG docker_compose_version=1.27.4
+ARG go_version=1.15
+ARG node_version=12
 
 ENV DOCKER_COMPOSE_VERSION ${docker_compose_version}
 ENV GO_VERSION ${go_version}
